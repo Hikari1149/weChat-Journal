@@ -1,0 +1,21 @@
+/* components/like/index.wxss */
+
+.container{
+  display: inline-flex;
+  padding-top: 10rpx;
+
+}
+.container image{
+  width: 32rpx;
+  height: 28rpx;
+}
+.container text{
+  font-size: 24rpx;
+  line-height: 24rpx;
+  /*消除text的上下间距*/
+  color:#bbb;
+  position: relative;
+  left: 6rpx;
+  bottom: 10rpx;
+
+}

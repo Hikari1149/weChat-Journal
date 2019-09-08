@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/classic/classic",
+    "components/like/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ff0",
+    "navigationBarTitleText": "hikari1149",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#D80000",
+    "enablePullDownRefresh": true
+  }
+}
