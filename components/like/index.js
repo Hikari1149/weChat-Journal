@@ -13,7 +13,6 @@ Component({
     onLike: function () {
       let like = this.properties.like
       let count = this.properties.count
-      console.log("in like ", this.properties)
       count = like ? count - 1 : count + 1
       this.setData({
         count,

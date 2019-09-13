@@ -1,20 +1,28 @@
 // pages/classic/classic.js
+
+import {ClassicModel} from '../../models/classic'
+const classic = new ClassicModel()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // //成功获取数据后 会调用传入的callBack函数
+    classic.getLatest((res)=>{
+      this.setData({
+        classicData:res
+      })
+    })
 
   },
-
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

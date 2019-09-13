@@ -9,5 +9,6 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#D80000",
     "enablePullDownRefresh": true
-  }
+  },
+  "sitemapLocation": "sitemap95.json"
 }
