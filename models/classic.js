@@ -11,14 +11,21 @@ export class ClassicModel extends HTTP{
             }
         })
     }
-    updateClassic(index,action,callBack){
-        let url = action ==='prev' ? `/classic/${index}/previous`:`/classic/${index}/next`
-        this.request({
-            url,
-            success:(res)=>{
-                callBack(res)
-            }
-        })
+    getClassic(index,action,callBack){
+        let newIndex = action ==='previous'? index-1:index+1
+        let classicData = this._getStorage(`classic-${newIndex}`)
+        if(classicData){
+           callBack(classicData) 
+        }else{
+            this.request({
+                url:`/classic/${index}/${action}`,
+                success:(res)=>{
+                    this._setStorage(`classic-${res.index}`,res)
+                    callBack(res)
+                    
+                }
+            })
+        }
     }
     isFirstest(index){
         let firstIndex = this._getStorage('classicIndex')

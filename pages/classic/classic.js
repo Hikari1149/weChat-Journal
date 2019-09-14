@@ -35,14 +35,14 @@ Page({
 
 
   onPrev:function(){
-    this._updateClassic('prev')
+    this._getClassic('previous')
   },
   onNext:function(){
-    this._updateClassic('next')
+    this._getClassic('next')
   },
-  _updateClassic:function(action){
+  _getClassic:function(action){
     let index = this.data.classicData.index
-    classic.updateClassic(index,action,(res)=>{
+    classic.getClassic(index,action,(res)=>{
       this.setData({
         classicData:res,
         firstest:classic.isFirstest(res.index),
