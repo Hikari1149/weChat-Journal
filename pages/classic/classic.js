@@ -1,13 +1,18 @@
 // pages/classic/classic.js
 
 import {ClassicModel} from '../../models/classic'
+import {LikeModel} from '../../models/like'
+
 const classic = new ClassicModel()
+const like = new LikeModel()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    firstest:true,
+    lastest:false
   },
 
   /**
@@ -19,10 +24,35 @@ Page({
       this.setData({
         classicData:res
       })
-    })
-
+    })  
   },
- 
+  onLike:function(event){
+    const classicData = this.data.classicData
+    const {id,type} = classicData
+    let status = event.detail.behavior
+    like.postLike(id,type,status)
+  },
+
+
+  onPrev:function(){
+    this._updateClassic('prev')
+  },
+  onNext:function(){
+    this._updateClassic('next')
+  },
+  _updateClassic:function(action){
+    let index = this.data.classicData.index
+    classic.updateClassic(index,action,(res)=>{
+      this.setData({
+        classicData:res,
+        firstest:classic.isFirstest(res.index),
+        lastest:classic.isLastest(res.index)
+      
+      })
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

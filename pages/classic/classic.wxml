@@ -1,1 +1,9 @@
-<v-like count='{{classicData.fav_nums}}' like='{{classicData.like_status}}'/>
+<view class="container">
+    <view class="header">
+        <v-epsoide epNum='{{classicData.index}}'/>
+        <v-like bind:like="onLike" count='{{classicData.fav_nums}}' like='{{classicData.like_status}}'/>
+    </view>
+
+    <v-movie img='{{classicData.image}}' text='{{classicData.content}}'/>
+    <v-navi bind:onPrev="onPrev" bind:onNext="onNext" class="navi" title='{{classicData.title}}' lastest='{{lastest}}' firstest='{{firstest}}'/>
+</view>

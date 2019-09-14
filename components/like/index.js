@@ -18,6 +18,10 @@ Component({
         count,
         like: !like
       })
+      //触发自定义事件
+      this.triggerEvent('like',{
+        behavior:this.properties.like   
+      })
     },
   },
   /**
