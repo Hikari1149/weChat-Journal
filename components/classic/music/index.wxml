@@ -1,8 +1,10 @@
 <!--components/classic/music/index.wxml-->
 
-<view >
-    <image src="{{imgTag}}" />
-    <image src="{{imgPlaying}}" />
-    <image src="{{imgWaiting}}" />
-    <text >{{text}}</text>
+<view class="container">
+    <image class="classic-img" src="{{img}}"/>
+    <image class="player-img" src="{{playing?imgPlaying:imgWaiting}}" 
+           bind:tap="onPlay"
+    />
+    <image class="tag" src="{{imgTag}}" />
+    <text class="content">{{text}}</text>
 </view>

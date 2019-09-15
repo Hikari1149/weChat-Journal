@@ -12,7 +12,9 @@ Page({
    */
   data: {
     firstest:true,
-    lastest:false
+    lastest:false,
+    favNum:0,
+    likeStatus:false
   },
 
   /**
@@ -22,7 +24,9 @@ Page({
     // //成功获取数据后 会调用传入的callBack函数
     classic.getLatest((res)=>{
       this.setData({
-        classicData:res
+        classicData:res,
+        favNum:res.fav_nums,
+        likeStatus:res.like_status
       })
     })  
   },
@@ -43,6 +47,7 @@ Page({
   _getClassic:function(action){
     let index = this.data.classicData.index
     classic.getClassic(index,action,(res)=>{
+      this._getLike(res.id,res.type)
       this.setData({
         classicData:res,
         firstest:classic.isFirstest(res.index),
@@ -51,7 +56,14 @@ Page({
       })
     })
   },
-
+  _getLike:function(artId,type){
+    classic.getLike(artId,type,(res)=>{
+      this.setData({
+        favNum:res.fav_nums,
+        likeStatus:res.like_status
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

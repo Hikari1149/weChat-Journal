@@ -1,9 +1,18 @@
 <view class="container">
     <view class="header">
         <v-epsoide epNum='{{classicData.index}}'/>
-        <v-like bind:like="onLike" count='{{classicData.fav_nums}}' like='{{classicData.like_status}}'/>
+        <v-like bind:like="onLike" count='{{favNum}}' like='{{likeStatus}}'/>
     </view>
 
-    <v-movie img='{{classicData.image}}' text='{{classicData.content}}'/>
+    <v-movie wx:if="{{classicData.type === 100}}" img='{{classicData.image}}' 
+    text='{{classicData.content}}'/>
+
+    <v-music wx:if="{{classicData.type === 200}}" img='{{classicData.image}}' 
+    text='{{classicData.content}}' musicSrc = '{{classicData.url}}'/>
+
+    <v-essay wx:if="{{classicData.type === 300}}"img='{{classicData.image}}' 
+    text='{{classicData.content}}'/>
+    
+
     <v-navi bind:onPrev="onPrev" bind:onNext="onNext" class="navi" title='{{classicData.title}}' lastest='{{lastest}}' firstest='{{firstest}}'/>
 </view>

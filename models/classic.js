@@ -27,6 +27,14 @@ export class ClassicModel extends HTTP{
             })
         }
     }
+    getLike(artId,type,callBack){
+        this.request({
+            url:`/classic/${type}/${artId}`,
+            success:(res)=>{
+                callBack(res)
+            }
+        })
+    }
     isFirstest(index){
         let firstIndex = this._getStorage('classicIndex')
         return index === firstIndex 

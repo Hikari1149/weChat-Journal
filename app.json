@@ -3,6 +3,7 @@
     "pages/classic/classic",
     "components/like/index"
   ],
+  "requiredBackgroundModes":["audio"],
   "window": {
     "navigationBarBackgroundColor": "#ff0",
     "navigationBarTitleText": "hikari1149",
