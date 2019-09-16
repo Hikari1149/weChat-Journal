@@ -1,0 +1,11 @@
+<!--components/book/index.wxml-->
+
+
+<view class="container" bind:tap="onOpenDetail" >
+    <image src="{{book.image||book.img}}" />
+    <view class="description">
+        <text class="title">{{book.title}}</text>
+        <text class="author">{{book.author}}</text>
+        <text class="foot">{{book.fav_nums}}</text>
+    </view>
+</view>
