@@ -21,5 +21,29 @@ class Book extends HTTP{
             url:`/book/${bid}/detail`
         })
     }
+    postComment(bid,content){
+        return this._request({
+            url:`/book/add/short_comment`,
+            method:"POST",
+            data:{
+                book_id:bid,
+                content
+            }
+        })
+    }
+    getSearch(key,start){
+        return this._request({
+            url:`/book/search?summary=1`,
+            data:{
+                q:key,
+                start
+            }
+        })
+    }
+    getMyBookCount(){
+        return this._request({
+            url:`/book/favor/count`
+        })
+    }
 }
 export {Book}

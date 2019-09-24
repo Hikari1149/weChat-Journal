@@ -1,0 +1,14 @@
+var formatText = function(text){
+    if(!text){
+        return ''
+    }
+    var reg = getRegExp('\\\\n','g')
+    return text.replace(reg,'\n&nbsp;&nbsp;&nbsp')
+}
+var limit = function(arr=[],length){
+    return arr.slice(0,length)
+}
+module.exports = {
+    formatText:formatText,
+    limit:limit
+}

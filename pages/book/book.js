@@ -7,9 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books:[]
+    books:[],
+    searchPanel:false,
+    more:null,
   },
-
+  
+  onActivateSearch:function(){
+    this.setData({searchPanel:true})
+  },
+  onCancel:function(){
+    this.setData({searchPanel:false})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,6 +26,7 @@ Page({
       this.setData({books:res})
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -58,7 +67,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({more:Math.random()})
   },
 
   /**

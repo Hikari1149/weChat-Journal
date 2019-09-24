@@ -1,7 +1,16 @@
 <view class="container">
     <view class="header">
         <v-epsoide epNum='{{classicData.index}}'/>
-        <v-like bind:like="onLike" count='{{favNum}}' like='{{likeStatus}}'/>
+        
+        <view class="like-container">
+            <v-like bind:like="onLike" count='{{favNum}}' like='{{likeStatus}}'/>
+            <v-img-btn open-type="share" class="share-btn">
+                <image slot="img" src="/images/icon/share.png" class="share"/>
+            </v-img-btn>
+        </view>
+       
+
+
     </view>
 
     <v-movie wx:if="{{classicData.type === 100}}" img='{{classicData.image}}' 

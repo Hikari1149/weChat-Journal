@@ -1,18 +1,54 @@
 // pages/my/my.js
+import {Book} from '../../models/book'
+const bookModel = new Book()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{},
+    hasUserInfo:false,
+    myBooksCount:0
   },
 
+  hasGottenUserInfo:function(){
+    wx.getSetting({
+      success:(data)=>{
+        if(data.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success:(data)=>{
+              this.setData({
+                hasUserInfo:true,
+                userInfo:data.userInfo
+              })
+            }
+          })
+        }else{
+          this.setData({hasUserInfo:false})
+        }
+      }
+    })
+  },
+  onGetUserInfo(event){
+    let userInfo = event.detail.userInfo
+    if(userInfo){
+      this.setData({
+        hasUserInfo:true,
+        userInfo
+      })
+    }
+  },
+  getMyBookCount:function(){
+    bookModel.getMyBookCount().then(res=>{
+      this.setData({myBooksCount:res.count})
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -26,6 +62,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.hasGottenUserInfo(),
+    this.getMyBookCount()
 
   },
 

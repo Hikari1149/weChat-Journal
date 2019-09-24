@@ -1,0 +1,54 @@
+<!--components/search/index.wxml-->
+
+
+<view class="container">
+    <view class="header">
+        <view class="search-container">
+            <image class="icon" src="./images/search.png"/>
+            <input placeholder-class="in-bar" placeholder="BookName" class="bar"
+                   auto-focus="{{true}}" bindconfirm="onConfirm"
+                   value="{{q}}"
+            />
+            <image bind:tap="onDelete" class="cancel-img" src="./images/cancel.png"/>
+        </view>
+        <view class='cancel' bind:tap="onCancel">取消</view>
+    </view>
+
+    <view wx:if="{{!finished}}">
+        <view class="history">
+            <view class="title">
+                <view class="chunk"/>
+                <text>History Search</text>
+            </view>
+            <view class="tags">
+                <v-tag wx:for="{{historyKeys}}" text="{{item}}" wx:key="id"
+                       bind:onPost="onConfirm"
+                />
+            </view>
+        </view>
+
+        <view class="history hot-search">
+            <view class="title">
+                <view class="chunk"/>
+                <text>Hot Search</text>
+            </view>
+
+            <view class="tags">
+                <v-tag wx:for="{{hotKeys}}" wx:key="id" text="{{item}}"
+                       bind:onPost="onConfirm" 
+                />
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{finished}}" class="books-container">
+        <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+            <v-book book="{{item}}" class="book"/>
+        </block>
+    </view>
+
+    <v-loading wx:if="{{loadingCenter}}" class="loading-center"/>
+    <v-loading wx:if="{{loading}}" class="loading"/>
+    <text wx:if="{{dataArray.length === 0 && finished && !loadingCenter}}">No Results</text>
+
+</view>
