@@ -10,7 +10,8 @@ Page({
   data: {
     userInfo:{},
     hasUserInfo:false,
-    myBooksCount:0
+    myBooksCount:0,
+    classics:[]
   },
 
   hasGottenUserInfo:function(){
@@ -45,6 +46,10 @@ Page({
       this.setData({myBooksCount:res.count})
     })
   },
+  getMyFavor:async function(){
+    let res = await bookModel.getMyFavor()
+    this.setData({classics:res})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -64,6 +69,7 @@ Page({
   onShow: function () {
     this.hasGottenUserInfo(),
     this.getMyBookCount()
+    this.getMyFavor()
 
   },
 

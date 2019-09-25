@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "v-img-btn":"/components/image-btn/index"
+    "v-img-btn":"/components/image-btn/index",
+    "preview-cmp":"/components/preview/index"
 
   }
 }

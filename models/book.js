@@ -45,5 +45,10 @@ class Book extends HTTP{
             url:`/book/favor/count`
         })
     }
+    getMyFavor(){
+        return this._request({
+            url:'/classic/favor'
+        })
+    }
 }
 export {Book}
